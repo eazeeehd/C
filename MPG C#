@@ -1,0 +1,91 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+/*At the beginning of a car journey the driver ensures that the car's fuel tank 
+ * is full and records the odometer reading. After the journey he 
+ * records the new reading and how much fuel it took to refill the tank. 
+ * Develop a program which will calculate the fuel consumption.
+ */
+
+namespace journey
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // global variables
+
+        double distance_travelled;
+        double mpg;
+        
+        private void btnQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCalculateConsumption_Click(object sender, EventArgs e)
+        {
+            get_readings();
+            output_results();
+
+        }
+
+        void get_readings()
+        {
+            double initial_reading;
+            double new_reading;
+
+
+            /* test data
+             * initial_reading = 4973
+             * new_reading 5423
+             */
+
+            initial_reading = int.Parse(txtinitialMiles.Text);
+            new_reading = int.Parse(txtfinalMiles.Text);
+            distance_travelled = new_reading - initial_reading;
+
+
+            calculate_consumption();
+        }
+
+        void calculate_consumption()
+        {
+            double fuel_topup;
+            double mpl;
+
+            // test data 60
+
+            // StubTest MessageBox.Show("MPG");
+            fuel_topup = int.Parse(txtTopup.Text);
+            mpl = distance_travelled/fuel_topup;
+
+            //convert to mpg 1gallon = 4.55 Litres
+            mpg = mpl * 4.55;
+        }
+
+        void output_results()
+        {
+            MessageBox.Show("The Miles Per Gallon Over "+distance_travelled +" is "+mpg);
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            btnCalculateConsumption.Visible = false;
+
+        }
+        private void txtTopup_TextChanged(object sender, EventArgs e)
+        {
+            btnCalculateConsumption.Visible = true;
+        }
+    }
+}
