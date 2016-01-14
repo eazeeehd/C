@@ -1,0 +1,138 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Arrays_and_Algos
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+        // global declaration of array
+        int[] thomas = new int[5];
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //Hard Coding all values in the array
+            thomas[0] = 46;
+            thomas[1] = 62;
+            thomas[2] = 81;
+            thomas[3] = 63;
+            thomas[4] = 61;
+        } 
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string output = "";
+
+            for (int i = 0; i < 5; i++)
+            {
+                output += thomas[i].ToString();
+                output += "\n";
+            }
+            MessageBox.Show(output);
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //for (int i = 0; i < 5; i++)
+            //thomas[i] = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter a number "));
+            /*
+             *  1.  loop for count goes from 1 to 20 repeat
+                2.1	prompt user for number
+                2.2	read number
+                2.3	if number is not in range 
+	                then
+                2.4		print an error message 
+	                    endif
+                2.5	       until number is within range
+                3.		       store validated number in numbers(count) 
+		        loopend
+             */
+            int temp_num;
+            for (int i = 0; i < 5; i++)
+            {
+                temp_num = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter a number "));
+                if (temp_num >= 0 && temp_num <= 10)
+                    thomas[i] = temp_num;
+                else
+                    MessageBox.Show("Error");
+                i--;
+            }
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int element_number = 0;
+            element_number = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter a number between 0 and 4"));
+            MessageBox.Show(thomas[element_number].ToString());
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            /*1.	set maximum to first array element
+              2.	loop for all the other elements in the array 
+              3.		if this one is greater than maximum 
+                then
+              5.				set maximum to this one 
+			    end if
+                loopend
+              6.	print maximum 
+             */
+            int max = thomas[0];
+            int min = thomas[0];
+            //Finding The Maximum Value
+            for(int i=1; i < 5; i++)
+            {
+                if (thomas[i] > max)
+                    max = thomas[i];
+            }
+            MessageBox.Show("The Maximum Value Is " +max);
+            //Finding The Minimum Value
+            for(int i=1; i < 5; i++)
+            {
+                if (thomas[i] < min)
+                min = thomas[i];
+            }
+            MessageBox.Show("The Minimum Value Is " + min);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            /*1. set total to 0
+              2. loop for count goes from 1 to 20 
+              3. add numbers(count) into total 
+              loopend
+              4. set average to total / 20 
+              5. print average
+             */
+            double average;
+            int total = 0;
+            for (int i = 0; i < 5; i++)
+            total += thomas[i];
+                
+            average = total / 5;
+            MessageBox.Show("The Average Is " + average);
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            string output = "";
+
+            for (int i = 0; i < 5; i++)
+            {
+                output += thomas[i].ToString();
+                output += "\n";
+            }
+            MessageBox.Show(output);
+        }
+    }
+}
