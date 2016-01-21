@@ -1,0 +1,103 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace C_sharp_temps
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        // delare global array 
+        int[] temperatures = new int[5];
+
+        
+        private void btn_fill_array_Click(object sender, EventArgs e)
+        {
+            int input = 0;
+            int count = 0;
+
+            do
+            {
+                input = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter a temperature in the range -5 to +30"));
+
+                    if (input < -5 || input > 30)
+                    {
+                        MessageBox.Show("invlaid input.  please re-enter");
+                    }
+                    else
+                    {
+                        temperatures[count] = input;
+                        count++;
+                    }
+
+
+            } while (count < 5);
+        }
+
+        private void btn_print_Click(object sender, EventArgs e)
+        {
+            string output = "";
+            for (int count = 0; count < 5; count++)
+                output += temperatures[count].ToString() + "\n";
+
+            MessageBox.Show(output);
+
+        }
+
+        private void btnmax_min_Click(object sender, EventArgs e)
+        {
+            /*
+             * 1.	set maximum to first array element
+               2.	loop for all the other elements in the array 
+               3.		if this one is greater than maximum 
+                        then
+                5.				set maximum to this one 
+			            end if
+                    loopend
+                6.	print maximum
+            */
+
+        }
+
+        private void btn_closed_Click(object sender, EventArgs e)
+        {
+            /*
+             * Level 1
+            1.	get required value ( temperature to check against)
+            2.	set occurrences count to 0
+            3.	loop for every element in the array
+                4.	if this element matches required value then
+                5.		add 1 to occurrences(count) 
+	                endif
+                loopend
+            6.	print occurrences(count)-days closed
+             */
+        }
+
+        
+   
+
+
+        private void btnaverage_temp_Click()
+        {
+            /*
+             * 1. set total to 0
+               2. loop for count goes from 0 to size of array
+               3	add numbers(count) into total 
+                   loopend
+               4.	set average to total / size of array 
+               5. print average
+            */
+        }
+
+    }
+}
