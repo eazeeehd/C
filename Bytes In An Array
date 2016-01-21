@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Array_Details
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        int[] numbers = new int[] {22,47,23,52,44,22,56,88,4,5,64,12};
+        private void Btn_strt_Click(object sender, EventArgs e)
+        { 
+        /*
+         * reads number into a dynamic array
+         * find out total memory size of the array
+         * find out the size of a single element
+         * find the number of elements
+         * print array in a loop
+         */
+            int total_size = 0;
+            int element_size = 0;
+            int elements = 0;
+            string output = "";
+             elements = numbers.Length; //Gives Number Of Elements
+             element_size = sizeof(int); //Size Of Each Element
+            //Memory space in total
+             total_size = elements * element_size;
+            MessageBox.Show("Total Array size in Bytes " + total_size.ToString());
+
+            for (int count = 0; count < elements; count++)
+                output += numbers[count] + "\n";
+            MessageBox.Show(output);
+        }
+    }
+}
