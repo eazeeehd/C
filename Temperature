@@ -18,7 +18,8 @@ namespace C_sharp_temps
 
         // delare global array 
         int[] temperatures = new int[5] {4, 6, 2, 1, 0};
-
+        //String Array To Hold Day Names
+        string[] Days = new string[5] {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday"};
         
         private void btn_fill_array_Click(object sender, EventArgs e)
         {
@@ -27,7 +28,7 @@ namespace C_sharp_temps
 
             do
             {
-                input = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter a temperature in the range -5 to +30"));
+                input = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Enter a temperature For "+ Days[count] +" in the range -5 to +30"));
 
                     if (input < -5 || input > 30)
                     {
@@ -45,10 +46,12 @@ namespace C_sharp_temps
 
         private void btn_print_Click(object sender, EventArgs e)
         {
+            //Modify to show days
             string output = "";
             for (int count = 0; count < 5; count++)
-                output += temperatures[count].ToString() + "\n";
-
+            {
+               output += Days[count] += " - " + temperatures[count].ToString() + "\n";
+            }
             MessageBox.Show(output);
 
         }
@@ -68,20 +71,32 @@ namespace C_sharp_temps
             //Initialising The Variables
             int warmest = temperatures[0];
             int coolest = temperatures[0];
+
+            int warm_index = 0;
+            int cool_index = 0;
+            //Modify to show which day was coolest and warmest!
+            //add two variables
+            //in if statement allocate array index
             //Start Of Loop
             for (int count = 1; count < 5; count++)
             { 
                 //Finding The Warmest Day
-                if(temperatures[count] > warmest)
-                warmest = temperatures[count];
+                if (temperatures[count] > warmest)
+                {
+                    warmest = temperatures[count];
+                    warm_index = count;
+                }
                 //Finding The Coolest
-                if(temperatures[count] < coolest)
-                coolest = temperatures[count];
+
+                if (temperatures[count] < coolest)
+                {
+                    coolest = temperatures[count];
+                    cool_index = count;
+                }
             }//End Loop
             //Telling User Coolest and Warmest Days
-            MessageBox.Show("The Warmest Day Was " + warmest.ToString() + "\n" + "The Coolest Day Was " +coolest.ToString());
-
-
+            MessageBox.Show("The Warmest Day Was " + Days[warm_index] + " " + warmest.ToString() 
+                + "\n" + "The Coolest Day Was " + Days[cool_index] + " " + coolest.ToString());
         }
 
         private void btn_closed_Click(object sender, EventArgs e)
@@ -112,8 +127,8 @@ namespace C_sharp_temps
             MessageBox.Show("Closed For " + occurences.ToString() + " days");
 
         }
-
-	private void btnaverage_temp_Click(object sender, EventArgs e)
+        
+        private void btnaverage_temp_Click(object sender, EventArgs e)
         {
             /*
              * 1. set total to 0
