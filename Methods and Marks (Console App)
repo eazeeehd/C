@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace Methods
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            method1();
+        }
+        static void method1()
+        {
+            string name;
+            Console.WriteLine("Enter Name");
+            name = Console.ReadLine();
+            Console.WriteLine("Your Name Is " + name + "\n");
+            method2();
+        }
+        static void method2()
+        {
+            int mark = 0;
+            string mark_s = "";
+            Console.Write("Enter a mark ");
+            mark = int.Parse(Console.ReadLine());
+            if (mark >= 70)
+                mark_s = "A";
+            else if (mark >= 60 && mark <= 69)
+                mark_s = "B";
+            else if (mark < 60 && mark > 50)
+                mark_s = "C";
+            else
+                mark_s = "Fail";
+            method3(mark_s);
+            method1();
+        }
+        static void method3(string grade)
+        {
+            Console.WriteLine(grade);
+        }
+    }
+}
