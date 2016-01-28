@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Parameter
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            getdata();
+        }
+
+        void getdata()
+        {
+            //gets input from inputbox
+            //passes to print method
+
+            //local variables
+            string firstname, lastname;
+            int age = 22;
+
+            firstname = Microsoft.VisualBasic.Interaction.InputBox("What Is Your Name?");
+            lastname = Microsoft.VisualBasic.Interaction.InputBox("What Is Your Surname?");
+
+            //call method to print and pass the data
+            printdata(lastname, firstname, age);
+        }
+
+        void printdata(string s1, string s2, int a)
+        {
+            //print data passed by the value parameters
+            MessageBox.Show("Hello " + s1+ " " + s2 + "\n" + "Age " + a.ToString());
+        }
+    }
+}
