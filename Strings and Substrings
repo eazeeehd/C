@@ -1,0 +1,164 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace strings
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+
+              
+
+        private void act_on_choice(int input)
+        {
+            // method written to call methods from button input
+
+            switch (input)
+            {
+                case 1:
+                    change_case();
+                    break;
+                case 2:
+                   substrings();
+                    break;
+                case 3:
+                    join_strings();
+                    break;
+                case 4:
+                    username();
+                    break;
+                case 5:
+                    this.Close();
+                    break;
+
+
+            }// end switch
+        }// end mentod
+
+
+        private void change_case()
+        {
+            // change the case of s1 to uppercase
+
+            string s1 = "panda";
+
+            string st1;
+            st1 = s1.ToUpper();
+            
+
+            MessageBox.Show(s1 + " = " + st1);
+        }
+
+      
+
+
+        private void substrings()
+        {
+           string st1 = " Now is the winter of our discontent";
+           string st2;
+
+            // remove characters from the end - need to know how many to keep
+           st2 = st1.Remove(15);
+           MessageBox.Show(st2);
+          
+            // extract characters from a string (Substring)- need to know start point and how many characters
+           st2 = st1.Substring (21,4);
+           MessageBox.Show(st2);
+
+            // extract characters from starting point to the end
+           st2 = st1.Substring(25);
+           MessageBox.Show(st2);
+          
+     
+        }
+
+
+         private void join_strings()
+         {
+             string s1 = "happy";
+             string s2 = "days";
+
+             //           join s1 and s2 - ovwewriting s1
+
+             //s1 = string.Concat(s1, s2);
+            // MessageBox.Show(s1);
+             s1 = string.Concat(s1, " ", s2);
+             MessageBox.Show(s1);
+
+             // find the value of a position within the string - uses IndexOf()
+             int pos = 0;
+             pos = s1.IndexOf(" ");
+             MessageBox.Show(pos.ToString());
+
+             // write the code to find the character after the space found above
+             pos = s1.IndexOf(" ") + 1;
+             MessageBox.Show(pos.ToString());
+         }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            // presents a small menu
+
+            int input = 0;  // used to store option number
+
+            string display;  // stores contents of input box dialogue
+
+            display = "Enter your choice\n" +
+                      " 1. Change case\n" +
+                      " 2. substrings\n" +
+                      " 3. join strings\n" +
+                      " 4. generate a username\n" +
+                      " 5. Quit";
+
+            input = int.Parse(Microsoft.VisualBasic.Interaction.InputBox(display));
+
+            // calls method to decide what to do and passes value of input as parameter
+
+           act_on_choice(input);
+
+        }// end start button
+
+
+        private void username()
+        {
+           // gets a name from the user in first name and last name and reads into a variable
+
+            //passes the value of the variable to method generate_name() 
+
+            string name = "";
+
+            name = Microsoft.VisualBasic.Interaction.InputBox("Enter your first and last name");
+
+            generate_name(name);
+        }
+
+        private void generate_name(string name_in)
+        {
+            string username;
+            int position = 0;
+
+            /* extract the first initial from name_in and add to username
+             * find the position of the sapce
+             * add the remaining characters from the space to username - remember not to loose the first character
+             * change to all lowercase st1 = s1.ToLower();
+             * print username
+             */
+
+            username = name_in.Substring(0, 1);
+            position = name_in.IndexOf(" ")+1;
+            username = string.Concat(username, name_in.Substring(position));
+            MessageBox.Show(username.ToLower());
+
+        }
+    }
+}
