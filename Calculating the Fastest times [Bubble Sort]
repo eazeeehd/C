@@ -1,0 +1,64 @@
+//Peter Kemley
+//Task 4A
+namespace Task4a
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            double[] calcTimes = new double[] { 21.23, 23.45, 23.71, 22.22, 24.12, 21.23, 21.23, 21.45 };
+            int count = calcTimes.Length;
+            MessageBox.Show("Task 4A" +"\n"+ "03/03/2016");
+            MessageBox.Show("Sorting times in order of speed");
+            displayArray(calcTimes, count);
+            Calculations(calcTimes, count);
+           
+        }
+
+        void Calculations(double[] times, int arrayLength)
+        {
+            //temporary variable
+            double temp;
+
+            //Set swapped to true
+            //set noofcomparisons to MAX - 1
+            int swapped = 1;
+            int comparisons = arrayLength - 1;
+
+            while (swapped == 1)
+            {
+                //set swapMADE to false
+                swapped = 0;
+                for (int i = 0; i < comparisons; i++)
+                {
+                    //IF array element [i] > array element [i+1] THEN
+                    if (times[i] > times[i + 1])
+                    //swap values
+                    {
+                        temp = times[i]; //place first value into temp
+                        times[i] = times[i + 1]; //overwrite value in times[i] with i + 1
+                        times[i + 1] = temp;//allocate value of temp to i+1
+                        swapped = 1; //set swapped to true
+                    }
+                }
+                comparisons--;//decrement the comparison
+            }//End While	
+            displayArray(times, arrayLength);
+        }
+        void displayArray(double[] times, int arrayLength)
+        {
+            string output = "";
+
+            for (int i = 0; i < arrayLength; i++)
+            {
+                output += times[i].ToString() + "\n ";
+            }
+            MessageBox.Show(output);
+        }
+    }
+}
